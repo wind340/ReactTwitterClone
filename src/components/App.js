@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AppRouter from "./Router";
 import { authService } from "../fbase";
-import Home from "routes/Home";
 
 function App() {
   const [init, setInit] = useState(false);
