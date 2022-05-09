@@ -1,3 +1,4 @@
+import Nweet from "components/Nweet";
 import { dbService } from "fbase";
 import {
   addDoc,
@@ -60,10 +61,11 @@ const Home = ({ userObj }) => {
       </form>
       <div>
         {nweets.map((nweet) => (
-          <div key={nweet.id}>
-            <h4>{nweet.text}</h4>
-            <span>{new Date(nweet.createdAt).toLocaleString()}</span>
-          </div>
+          <Nweet
+            key={nweet.id}
+            nweetObj={nweet}
+            isOwner={nweet.createId === userObj.uid}
+          />
         ))}
       </div>
     </div>
