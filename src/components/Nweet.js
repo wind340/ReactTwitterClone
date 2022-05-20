@@ -36,55 +36,47 @@ const Nweet = ({ nweetObj, isOwner }) => {
     setNewNweet(value);
   };
   return (
-    <>
-      <div className="nweet">
-        {editing ? (
-          <>
-            <form onSubmit={onSubmit} className="container nweetEdit">
-              <input
-                type="text"
-                placeholder="Edit your nweet"
-                value={newNweet}
-                required
-                autoFocus
-                onChange={onChange}
-                className="formInput"
-              />
-              <input type="submit" value="Update Nweet" className="formBtn" />
-            </form>
-            <button onClick={toggleEditing} className="formBtn cancelBtn">
-              Cancel
-            </button>
-          </>
-        ) : (
-          <>
-            <h4>{nweetObj.text}</h4>
-            {nweetObj.attachmentUrl && (
-              <img
-                src={
-                  nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />
-                }
-                width="160px"
-                height="160px"
-              />
-            )}
-            <h5>{new Date(nweetObj.createdAt).toLocaleString()}</h5>
-            {isOwner && (
-              <>
-                <div className="nweet__actions">
-                  <span onClick={onDeleteClick}>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </span>
-                  <span onClick={toggleEditing}>
-                    <FontAwesomeIcon icon={faPencilAlt} />
-                  </span>
-                </div>
-              </>
-            )}
-          </>
-        )}
-      </div>
-    </>
+    <div className="nweet">
+      {editing ? (
+        <>
+          <form onSubmit={onSubmit} className="container nweetEdit">
+            <input
+              type="text"
+              placeholder="Edit your nweet"
+              value={newNweet}
+              required
+              autoFocus
+              onChange={onChange}
+              className="formInput"
+            />
+            <input type="submit" value="Update Nweet" className="formBtn" />
+          </form>
+          <span onClick={toggleEditing} className="formBtn cancelBtn">
+            Cancel
+          </span>
+        </>
+      ) : (
+        <>
+          <h4>{nweetObj.text}</h4>
+          {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />}
+
+          <h5>{new Date(nweetObj.createdAt).toLocaleString()}</h5>
+
+          {isOwner && (
+            <>
+              <div className="nweet__actions">
+                <span onClick={onDeleteClick}>
+                  <FontAwesomeIcon icon={faTrash} />
+                </span>
+                <span onClick={toggleEditing}>
+                  <FontAwesomeIcon icon={faPencilAlt} />
+                </span>
+              </div>
+            </>
+          )}
+        </>
+      )}
+    </div>
   );
 };
 
