@@ -72,14 +72,21 @@ const NweetFactory = ({ userObj }) => {
           maxLength={120}
           className="factoryInput__input"
         />
+        <input type="submit" value="Nweet" className="factoryInput__arrow" />
       </div>
+      <label htmlFor="attach-file" className="factoryInput_label">
+        <span>Add photos</span>
+        <FontAwesomeIcon icon={faPlus} />
+      </label>
       <input
+        id="attach-file"
         type="file"
         accept="image/*"
         onChange={onFileChange}
-        ref={fileInputRef}
+        style={{
+          opacity: 0,
+        }}
       />
-      <input type="submit" value="Nweet" className="factoryInput__arrow" />
       {attachment && (
         <div className="factoryForm__attachment">
           <img
